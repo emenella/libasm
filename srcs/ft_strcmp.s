@@ -26,10 +26,9 @@ equal:
     jmp     cmp_loop        ; Jump back to the beginning of the loop
 
 not_equal:
-    ; Characters are not equal, set the return value based on the comparison result
-    mov     rax, 1          ; Set rax to 1 (s1 > s2) or -1 (s1 < s2)
-    sub     al, dl          ; Subtract the characters to set the carry flag correctly
-    sbb     rax, rax        ; Set rax to -1 (s1 < s2) or 1 (s1 > s2) based on the carry flag
+    ; Characters are not equal, set the return value to the difference of the characters
+    sub     al, dl          ; Subtract the characters to get the difference
+    movsx   rax, al         ; Sign-extend the difference to 64 bits
     ret
 
 end:

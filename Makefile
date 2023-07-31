@@ -49,6 +49,8 @@ fclean: clean
 # Rebuild the project
 re: fclean all
 
+bonus:			$(NAME)
+
 # Rule for running tests (modify as needed)
 test: $(NAME) $(C_OBJECTS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(C_OBJECTS) -o $(test) -L. -lasm
