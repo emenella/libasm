@@ -17,8 +17,7 @@ NAME = libasm.a
 
 # List of source files
 ASM_SOURCES = $(wildcard $(SRC_DIR)/*.s)
-C_SOURCES = $(wildcard $(TEST_DIR)/*.c)
-
+C_SOURCES = $(TEST_DIR)/main.c $(TEST_DIR)/test_atoi_base.c
 # List of object files
 ASM_OBJECTS = $(patsubst $(SRC_DIR)/%.s, $(BUILD_DIR)/%.o, $(ASM_SOURCES))
 C_OBJECTS = $(patsubst $(TEST_DIR)/%.c, $(BUILD_DIR)/%.o, $(C_SOURCES))

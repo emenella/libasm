@@ -22,6 +22,8 @@ ft_atoi_base:					; RDI, RSI - RAX, RBX!, RCX, RDX
 	jne		.error				; Cannot have duplicates
 	test	al,		al			; Check for terminator
 	jz		.validated			; Loop until terminator
+	cmp rax, 255    			; Vérifiez si rax dépasse la taille du buffer
+	jae .error       			; Si oui, provoquez une erreur
 	mov		[rdx + rax], cl		; Put position into buffer
 	inc		rcx					; Increment RCX
 	jmp		.validate
@@ -67,7 +69,11 @@ ft_atoi_base:					; RDI, RSI - RAX, RBX!, RCX, RDX
 	lea		rdx,	[rel buff]	; 
 	pop		rsi					; Restore RSI
 .clear:
+	cmp rcx, 255    			; Vérifiez si rcx dépasse la taille du buffer
+	jae .exit        			; Si oui, sortez de la boucle
 	mov		bl,		[rsi + rcx]	; Read a char at RCX
+	cmp rbx, 255    			; Vérifiez si rbx dépasse la taille du buffer
+	jae .exit        			; Si oui, sortez de la boucle
 	mov		byte [rdx + rbx], -1; Reset current char
 	test	rcx, rcx			; 
 	jz		.exit				; Continue if not zero
