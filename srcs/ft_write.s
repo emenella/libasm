@@ -19,9 +19,9 @@ ft_write:
 	ret
 
 error:
-	neg		rax			; car le syscall renvoie dans rax errno mais en negatif
-	mov		rdi, rax		; rdi sert de tampon car apres rax prendera le retour de errno location
-	call	__errno_location WRT ..plt	; errno location renvoie un pointeur sur errno
-	mov		[rax], rdi		; ici rax contient l'adresse de errno donc en faisant ca on met rdi dans errno
-	mov		rax, -1			; on met rax à -1 pour renvoyer la bonne valeur d'un appel à write
-	ret					; return rax
+    neg		rax ; Negative value in rax because the syscall returns errno as a negative value
+    mov		rdi, rax ; Move rax to rdi as a buffer, as rax will hold the return value of errno location
+    call	__errno_location WRT ..plt ; Call __errno_location with position-independent code
+    mov		[rax], rdi ; errno location returns a pointer to errno; store rdi into errno
+    mov		rax, -1 ; Set rax to -1 to return the correct value for a write syscall
+    ret ; Return rax
