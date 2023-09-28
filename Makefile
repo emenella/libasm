@@ -16,7 +16,7 @@ test = $(BIN_DIR)/test
 NAME = libasm.a
 
 # List of source files
-ASM_SOURCES = $(wildcard $(SRC_DIR)/*.s)
+ASM_SOURCES = $(SRC_DIR)/ft_strlen.s $(SRC_DIR)/ft_strcpy.s $(SRC_DIR)/ft_strcmp.s $(SRC_DIR)/ft_write.s $(SRC_DIR)/ft_read.s $(SRC_DIR)/ft_strdup.s $(SRC_DIR)/ft_atoi_base_bonus.s $(SRC_DIR)/ft_list_push_front_bonus.s $(SRC_DIR)/ft_list_size_bonus.s $(SRC_DIR)/ft_list_sort_bonus.s $(SRC_DIR)/ft_list_remove_if_bonus.s
 C_SOURCES = $(TEST_DIR)/main.c $(TEST_DIR)/test_atoi_base.c
 # List of object files
 ASM_OBJECTS = $(patsubst $(SRC_DIR)/%.s, $(BUILD_DIR)/%.o, $(ASM_SOURCES))
