@@ -7,7 +7,7 @@ ft_list_push_front:				; RDI, RSI - RAX, R10
 	push	rsi
 	mov		rdi,		16
 	sub		rsp,		8		; Align stack to 16 bytes
-	call	malloc				; malloc(sizeof(t_list))
+	call	malloc WRT ..plt	; malloc(sizeof(t_list))
 	add		rsp,		8		; Restore alignment
 	pop		rsi
 	pop		rdi

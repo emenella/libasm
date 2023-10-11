@@ -29,7 +29,7 @@ ft_list_remove_if:
 
     ; Remove the current node from the list
     mov rdi, [r12 + 8]       ; Load the next node
-    call free                ; Free the current node
+    call free WRT ..plt      ; Free the current node
     mov [r12], rdi           ; Update the pointer in begin_list
 
     jmp .start               ; Loop to the next node
@@ -60,7 +60,7 @@ ft_list_remove_if:
 
     ; Remove the matching node from the list
     mov rdi, [r12 + 8]       ; Load the next node
-    call free                ; Free the matching node
+    call free WRT ..plt      ; Free the matching node
     mov [r13 + 8], rdi       ; Update the previous node's next pointer
 
     jmp .loop                ; Continue loop
